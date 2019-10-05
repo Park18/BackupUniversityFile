@@ -5,37 +5,41 @@ using namespace std;
 phw::FolderRoute::FolderRoute(std::string subjectName)
 {
 	setSubjectName(subjectName);
+	setPtrFolderRoute();
 
-	vector<string>* ptrFolderRoute = new vector<string>;
-	setPtrFolderRoute(ptrFolderRoute);
+	getFolderRouteBackup();
 }
 
 phw::FolderRoute::~FolderRoute()
 {
+	setFolderRouteBackup();
 	delete getPtrFolderRoute();
 }
 
 void phw::FolderRoute::setFolderRouteBackup()
 {
-	string fileName = getSubjectName() + ".txt";
+	string fileName = "Backup\\" + getSubjectName() + ".txt";
 	ofstream writeFile(fileName);
 
 	for (int index = 0; index < getPtrFolderRoute()->size(); index++)
-		writeFile << getPtrFolderRoute() + index;
+		writeFile << (*getPtrFolderRoute())[index] << endl;
 
 	writeFile.close();
 }
 
 void phw::FolderRoute::getFolderRouteBackup()
 {
-	string fileName = getSubjectName() + ".txt";
+	string fileName = "Backup\\"+getSubjectName() + ".txt";
 	ifstream readFile(fileName);
 
 	string route;
-	while (readFile.eof())
+	if (readFile.is_open())
 	{
-		readFile >> route;
-		addPtrFolderRoute(route);
+		while (!readFile.eof())
+		{
+			readFile >> route;
+			addPtrFolderRoute(route);
+		}
 	}
 }
 
@@ -52,5 +56,5 @@ void phw::FolderRoute::deletePtrFolderRoute(int index)
 void phw::FolderRoute::printPtrFolderRoute()
 {
 	for (int index = 0; index < getPtrFolderRoute()->size(); index++)
-		cout << index << " : " << getPtrFolderRoute()+index << endl;
+		cout << index << " : " << (*getPtrFolderRoute())[index] << endl;
 }

@@ -21,7 +21,8 @@ public:
 	~FolderRoute();
 
 	void setSubjectName(std::string subjectName) { this->subjectName = subjectName; }
-	void setPtrFolderRoute(std::vector<std::string>* pFolderRoute) { this->ptrFolderRoute = pFolderRoute; }
+	void setPtrFolderRoute() { this->ptrFolderRoute = new std::vector<std::string>; }
+	//void setPtrFolderRoute(std::vector<std::string>* ptrFolderRoute) { this->ptrFolderRoute = ptrFolderRoute; }
 
 	std::string getSubjectName() { return subjectName; }
 	std::vector<std::string>* getPtrFolderRoute() { return ptrFolderRoute; }
@@ -51,9 +52,6 @@ public:
 	 */
 	void printPtrFolderRoute();
 };
-
 } // namespace phw
-
-
 #endif // !FOLDERROUTE_H
 

@@ -1,8 +1,7 @@
-#include"FolderRoute.h"
+#include"BackupUniversityFile.h"
 
 int main()
 {
-	folderRoute::FolderRoute folderRoute("test");
-
-	folderRoute.printPtrFolderRoute();
+	BackupUniversityFile backupUniversityFile;
+	backupUniversityFile.testSubject();
 }
