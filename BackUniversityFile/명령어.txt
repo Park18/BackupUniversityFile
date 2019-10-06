@@ -1,0 +1,21 @@
+¸í·É¾î
+action -option subject element
+
+/*add
+ *subject subjectName
+ *-f subject localRoute
+ */
+
+/*_delete
+ *subject index
+ *-f subject index
+ */
+
+/*print
+ *suject
+ *-f subject
+ */
+
+/*clear
+ *system("cls");
+ */

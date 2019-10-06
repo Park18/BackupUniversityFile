@@ -19,11 +19,20 @@ phw::Subject::~Subject()
 
 void phw::Subject::setPtrFolderRoute()
 {
-	this->ptrFolderRoute = new std::vector<FolderRoute>;
+	this->ptrFolderRoute = new std::vector<FolderRoute*>;
 
 	for (int index = 0; index < getPtrSubject()->size(); index++)
-		getPtrFolderRoute()->push_back((*getPtrSubject())[index]);
+		getPtrFolderRoute()->push_back(new FolderRoute(getPtrSubjectAt(index)));
 	
+}
+
+int phw::Subject::getSubjectIndex(std::string subject)
+{
+	for (int index = 0; index < getPtrSubject()->size(); index++)
+		if (getPtrSubjectAt(index) == subject)
+			return index;
+	
+	return -1;
 }
 
 void phw::Subject::setSubjectBackup()

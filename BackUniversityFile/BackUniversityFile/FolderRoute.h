@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <algorithm>
 
 namespace phw
 {
@@ -22,7 +23,6 @@ public:
 
 	void setSubjectName(std::string subjectName) { this->subjectName = subjectName; }
 	void setPtrFolderRoute() { this->ptrFolderRoute = new std::vector<std::string>; }
-	//void setPtrFolderRoute(std::vector<std::string>* ptrFolderRoute) { this->ptrFolderRoute = ptrFolderRoute; }
 
 	std::string getSubjectName() { return subjectName; }
 	std::vector<std::string>* getPtrFolderRoute() { return ptrFolderRoute; }
