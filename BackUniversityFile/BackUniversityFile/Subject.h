@@ -8,6 +8,11 @@
 
 namespace phw
 {
+
+/***
+ * 과목에 관한 클래스
+ * 과목을 생성하면 경로도 자동으로 생성된다.
+ */
 class Subject
 {
 private:
@@ -23,7 +28,7 @@ public:
 
 	std::vector<std::string>* getPtrSubject() { return ptrSubject; }
 	std::string getPtrSubjectAt(int index) { return (*getPtrSubject())[index]; }
-	int getSubjectIndex(std::string subject);
+	int getPtrSubjectIndex(std::string subject);
 	std::vector<FolderRoute*>* getPtrFolderRoute() { return ptrFolderRoute; }
 	FolderRoute* getPtrFolderRouteAt(int index) { return (*getPtrFolderRoute())[index]; }
 

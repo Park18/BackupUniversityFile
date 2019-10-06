@@ -26,7 +26,7 @@ void phw::Subject::setPtrFolderRoute()
 	
 }
 
-int phw::Subject::getSubjectIndex(std::string subject)
+int phw::Subject::getPtrSubjectIndex(std::string subject)
 {
 	for (int index = 0; index < getPtrSubject()->size(); index++)
 		if (getPtrSubjectAt(index) == subject)

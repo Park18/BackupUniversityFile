@@ -154,11 +154,13 @@
     <ClCompile Include="BackupUniversityFile.cpp" />
     <ClCompile Include="FolderRoute.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Subject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackupUniversityFile.h" />
     <ClInclude Include="FolderRoute.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="Subject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

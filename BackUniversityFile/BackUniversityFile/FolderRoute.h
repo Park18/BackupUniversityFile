@@ -11,6 +11,9 @@
 namespace phw
 {
 
+/***
+ * 폴더의 경로에 관한 클래스
+ */
 class FolderRoute
 {
 private:
