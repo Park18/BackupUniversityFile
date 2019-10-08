@@ -2,7 +2,7 @@
 #ifndef BACKUPUNIVERSITYFILE_H
 #define BACKUPUNIVERSITYFILE_H
 
-#include "Manager.h"
+
 
 namespace phw
 {
@@ -14,17 +14,8 @@ class BackupUniversityFile
 {
 private:
 
-
 public:
-	/**
-	 * main ¸Þ¼­µå
-	 */
-	void backupUniversityFile();
 
-	// test
-	void testFolderRoute();
-	void testSubject();
-	void testManager();
 };
 
 } // !namespace pwh

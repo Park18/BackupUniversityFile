@@ -1,0 +1,39 @@
+백업 프로그램
+
+프로그램 초기화
+백업된 정보 : 
+subject.txt : 읽어야할 과목.txt의 과목들을 저장
+과목.txt : 해당 과목의 경로를 저장(0번 인덱스 경로는 mainRoute이다.)
+
+프로그램 실행
+사용자에게 명령어를 입력 받는다.
+명령어 : action option subject element
+
+action : 행동(백업, 추가, 삭제, 출력, 화면 청소, 종료)
+option : 행동에 대한 옵션(추가, 삭제, 출력 에서 과목/과목별경로를 선택(옵션이 있으면 경로를 선택))
+subject : 과목(옵션에 따라 하는 일이 달라진다.)
+	* 옵션 true : 경로를 저장한 과목명.txt를 읽기위한 과목
+	* 옵션 false : subject.txt에 추가할 과목(element가 된다.)
+element : 요소(옵션이 true일 때 사용되는 자료로 추가, 삭제, 출력에서 과목.txt에 관여하게 된다.)
+
+백업 실행 : 백업할 파일을 가진 경로(mainRoute)에서 백업될 경로(backupRoute)
+로 백업을 실행한다.
+
+추가 : subject.txt에 subject를 추가
+
+추가 -f : 과목명.txt에 element를 추가
+
+삭제 : subject.txt의 정보를 읽어서 index : 과목명을 보여준 후 인덱스를 입력하면 해당 인덱스 과목명이 삭제된다.
+
+삭제 -f : 과목명.txt 정보를 읽어서 index : 경로를 보여준 후 인덱스를 입력하면 해당 인덱스 경로가 삭제된다.
+
+출력 : subject의 모든 과목명 출력
+
+출력 -f : 과목명.txt의 모든 경로 출력
+
+화면 청소 : system("cls")
+
+종료 : exit(0)
+
+프로그램 종료
+수정된 정보를 subject.txt 과목명.txt에 저장한다.
