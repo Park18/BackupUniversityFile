@@ -88,6 +88,17 @@ void route::FolderRoute::print()
 		cout << index << " : " << (*getPtrFolderRoute())[index] << endl;
 }
 
+int route::Subject::getPtrSubejectIndex(std::string subject)
+{
+	for (int index = 0; index < getPtrSubject()->size(); index++)
+	{
+		if ((*getPtrSubject())[index] == subject)
+			return index;
+	}
+
+	return -1;
+}
+
 //------------------------------------------//
 //        Subject : public BaseAction       //
 //------------------------------------------//

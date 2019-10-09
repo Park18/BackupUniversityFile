@@ -55,14 +55,14 @@ void Command::add(std::string command)
 	// 옵션이 있다면(과목명.txt에 추가)
 	if (findOption(command))
 	{
-		int index; // findSubject(command)에 해당하는 인덱스를 찾는다.
-		(*getSubject()->getPtrFolderRoute())[index]->add(findElement(command));
+		int index = getPtrSubject()->getPtrSubejectIndex(findSubject(command));
+		(*getPtrSubject()->getPtrFolderRoute())[index]->add(findElement(command));
 	}
 
 	// 옵션이 없다면(subject.txt에 추가)
 	else
 	{
-		getSubject()->add(findSubject(command));
+		getPtrSubject()->add(findSubject(command));
 	}
 }
 
@@ -71,16 +71,16 @@ void Command::_delete(std::string command)
 	// 옵션이 있다면(과목명.txt 정보를 보여준 후 index를 입력받아 해당 인덱스 경로 삭제)
 	if (findOption(command))
 	{
-		int index; // findSubject(command)에 해당하는 인덱스를 찾는다.
-		(*getSubject()->getPtrFolderRoute())[index]->print();
-		(*getSubject()->getPtrFolderRoute())[index]->_delete(getUserIndex());
+		int index = getPtrSubject()->getPtrSubejectIndex(findSubject(command));
+		(*getPtrSubject()->getPtrFolderRoute())[index]->print();
+		(*getPtrSubject()->getPtrFolderRoute())[index]->_delete(getUserIndex());
 	}
 
 	// 옵션이 없다면(subject.txt 정보를 보여준 후 index를 입력받아 해당 인덱스 과목명 삭제)
 	else
 	{
-		getSubject()->print();
-		getSubject()->_delete(getUserIndex());
+		getPtrSubject()->print();
+		getPtrSubject()->_delete(getUserIndex());
 	}
 }
 
@@ -89,14 +89,14 @@ void Command::print(std::string command)
 	// 옵션이 있다면(과목명.txt의 모든 경로를 출력)
 	if (findOption(command))
 	{
-		int index; // findSubject(command)에 해당하는 인덱스를 찾는다.
-		(*getSubject()->getPtrFolderRoute())[index]->print();
+		int index = getPtrSubject()->getPtrSubejectIndex(findSubject(command));
+		(*getPtrSubject()->getPtrFolderRoute())[index]->print();
 	}
 
 	// 옵션이 없다면(subject.txt의 모든 경로를 출력)
 	else
 	{
-		getSubject()->print();
+		getPtrSubject()->print();
 	}
 }
 
@@ -120,5 +120,32 @@ int Command::getUserIndex()
 	}
 
 	return index;
+}
+
+void Command::commandSystem()
+{
+	while (true)
+	{
+		string command;
+		getline(cin, command);
+
+		if (findAction(command) == "add")
+			add(command);
+
+		else if (findAction(command) == "_delete")
+			_delete(command);
+
+		else if (findAction(command) == "print")
+			print(command);
+
+		else if (findAction(command) == "clear")
+			clear();
+
+		else if (findAction(command) == "_exit")
+			_exit();
+
+		else
+			cout << "잘못된 명령어 입니다. 다시 입력해 주세요" << endl;
+	}
 }
 

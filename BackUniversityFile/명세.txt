@@ -19,17 +19,17 @@ element : 요소(옵션이 true일 때 사용되는 자료로 추가, 삭제, 출력에서 과목.txt에 
 백업 실행 : 백업할 파일을 가진 경로(mainRoute)에서 백업될 경로(backupRoute)
 로 백업을 실행한다.
 
-추가 : subject.txt에 subject를 추가
+추가 subject : subject.txt에 subject를 추가
 
-추가 -f : 과목명.txt에 element를 추가
+추가 -f subject element : 과목명.txt에 element를 추가
 
-삭제 : subject.txt의 정보를 읽어서 index : 과목명을 보여준 후 인덱스를 입력하면 해당 인덱스 과목명이 삭제된다.
+삭제 subject : subject.txt의 정보를 읽어서 index : 과목명을 보여준 후 인덱스를 입력하면 해당 인덱스 과목명이 삭제된다.
 
-삭제 -f : 과목명.txt 정보를 읽어서 index : 경로를 보여준 후 인덱스를 입력하면 해당 인덱스 경로가 삭제된다.
+삭제 -f subject element : 과목명.txt 정보를 읽어서 index : 경로를 보여준 후 인덱스를 입력하면 해당 인덱스 경로가 삭제된다.
 
 출력 : subject의 모든 과목명 출력
 
-출력 -f : 과목명.txt의 모든 경로 출력
+출력 -f subject element : 과목명.txt의 모든 경로 출력
 
 화면 청소 : system("cls")
 

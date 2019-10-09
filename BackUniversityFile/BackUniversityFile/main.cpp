@@ -24,7 +24,7 @@ void subjectTest()
 	}
 }
 
-void commandTest()
+void commandTest1()
 {
 	Command command;
 
@@ -37,9 +37,16 @@ void commandTest()
 	cout << "option : " << command.findOption(str) << endl;
 }
 
+void commandTest2()
+{
+	Command command;
+	command.commandSystem();
+}
+
 int main()
 {
 	//folderRouteTest();
 	//subjectTest();
-	commandTest();
+	//commandTest1();
+	commandTest2();
 }

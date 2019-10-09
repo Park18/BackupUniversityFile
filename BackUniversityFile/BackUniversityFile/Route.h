@@ -86,6 +86,7 @@ public:
 
 	std::vector<std::string>* getPtrSubject() { return this->ptrSubject; }
 	std::vector<FolderRoute*>* getPtrFolderRoute() { return this->ptrFolderRoute; }
+	int getPtrSubejectIndex(std::string subject);
 
 	// BaseAction을(를) 통해 상속됨
 	virtual void setBackup() override;
