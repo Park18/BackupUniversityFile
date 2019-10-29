@@ -96,6 +96,7 @@ int route::Subject::getPtrSubejectIndex(std::string subject)
 			return index;
 	}
 
+	// 못찾으면 -1 반환
 	return -1;
 }
 

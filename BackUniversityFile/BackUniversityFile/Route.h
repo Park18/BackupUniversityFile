@@ -1,4 +1,6 @@
 #pragma once
+
+// 정리할 헤더
 #ifndef ROUTEMANAGER_H
 #define ROUTEMANAGER_H
 
