@@ -1,4 +1,5 @@
-#include "Command.h"
+/*
+#include "Command_delete.h"
 
 using namespace std;
 
@@ -170,3 +171,4 @@ void Command::commandSystem()
 	}
 }
 
+*/

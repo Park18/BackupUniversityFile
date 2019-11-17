@@ -1,11 +1,13 @@
-#include "RootManager.h"
+
 
 #include <boost\filesystem.hpp>
 #include <boost\foreach.hpp>
+#include <boost\filesystem\path.hpp>
+#include <iostream>
+
 
 using namespace std;
 
-void rootTest();
 
 int main()
 {
@@ -23,12 +25,11 @@ int main()
 	}
 	*/
 	
-	rootTest();
-}
+	/*
+	boost::filesystem::path my_dir("c:/library");
+	cout << boost::filesystem::is_directory(my_dir) << endl;
+	*/
 
-void rootTest()
-{
-	RootManager rootManager;
-
-	rootManager.checkRoot();
+	
+	
 }

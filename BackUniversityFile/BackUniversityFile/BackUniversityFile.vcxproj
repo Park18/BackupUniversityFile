@@ -164,17 +164,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BackupUniversityFile.cpp" />
-    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="Command_delete.cpp" />
+    <ClCompile Include="Command2.cpp" />
+    <ClCompile Include="Error.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RootManager.cpp" />
-    <ClCompile Include="Route.cpp" />
+    <ClCompile Include="Directory_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BackupUniversityFile.h" />
-    <ClInclude Include="Command.h" />
-    <ClInclude Include="RootManager.h" />
-    <ClInclude Include="Route.h" />
+    <ClInclude Include="Command_delete.h" />
+    <ClInclude Include="Command2.h" />
+    <ClInclude Include="Directory_Manager.hpp" />
+    <ClInclude Include="Error.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

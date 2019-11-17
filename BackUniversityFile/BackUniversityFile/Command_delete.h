@@ -3,7 +3,7 @@
 #define COMMAND_H
 
 #include <string>
-#include "Route.h"
+//#include "Route.h"
 
 const std::string OPTION_F = "-f";
 
@@ -12,7 +12,7 @@ const std::string OPTION_F = "-f";
 class Command
 {
 private:
-	route::Subject* ptrSubject;	// 과목명을 관리하는 객체
+	//route::Subject* ptrSubject;	// 과목명을 관리하는 객체
 
 	// 명령어에서 각 요소를 찾아서 반환하는 메서드
 	std::string findAction(std::string command);
@@ -21,13 +21,13 @@ private:
 	bool findOption(std::string command);
 
 public:
-	Command() { setPtrSubject(); }
-	~Command() { delete getPtrSubject(); }
+	//Command() { setPtrSubject(); }
+	//~Command() { delete getPtrSubject(); }
 
 	// set
-	void setPtrSubject() { this->ptrSubject = new route::Subject(); }
+	//void setPtrSubject() { this->ptrSubject = new route::Subject(); }
 	// get
-	route::Subject* getPtrSubject() { return this->ptrSubject; }
+	//route::Subject* getPtrSubject() { return this->ptrSubject; }
 
 
 	// 콘솔 화면을 정리하는 메서드
