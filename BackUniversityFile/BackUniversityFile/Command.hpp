@@ -7,15 +7,14 @@
 
 #define OPTION_ROOT "-root" // 옵션 root
 #define OPTION_COPY "-copy"	// 옵션 copy
-const std::string ACTION[] = { "add","delete","print","exit","clear" };
 
-#define EXIT(code) exit(code)
-#define CLEAR() system("cls")
+#define EXIT(code) exit(code)	// 종료 매크로
+#define CLEAR() system("cls")	// 화면 청소 매크로
 
 //------------명령어-------------//
 // 추가: action, option, directory
-// 삭제: action, option, directory
-// 출력: action, option, directory
+// 삭제: action, option
+// 출력: action, option
 // 백업: action
 //----------명령어 형식----------//
 // action -option directory
@@ -27,6 +26,9 @@ const std::string ACTION[] = { "add","delete","print","exit","clear" };
 // add -root d:/gitbub
 // add -copy c/users/hyunwoo/download
 // backup
+//----------명령어 명세----------//
+// 명령어가 입력
+// 명령어 분활, 정상 명령어인지 확인
 
 /**
  @brief
@@ -38,36 +40,49 @@ const std::string ACTION[] = { "add","delete","print","exit","clear" };
  @author	박현우
  @brief		프로그램의 명령어 실행에 관여하는 클래스
  */
-class Command2
+class Command
 {
 private:
 	Root_Directory_Manager* ptr_root_manager; // root_directory를 관여하는 객체
 	Copy_Directory_Manager* ptr_copy_manager; // copy_directory를 관여하는 객체
-
-	std::string action;		// 명령어의 action
-	std::string option;		// 명령어의 option
-	std::string directory;	// 명령어의 directory
 	
 protected:
+	void set_ptr_root_manager(Root_Directory_Manager* ptr_root_manager) { this->ptr_root_manager = ptr_root_manager; }
+	void set_ptr_copy_manager(Copy_Directory_Manager* ptr_copy_manager) { this->ptr_copy_manager = ptr_copy_manager; }
+
+	Root_Directory_Manager* get_ptr_root_manager() { return ptr_root_manager; }
+	Copy_Directory_Manager* get_ptr_copy_manager() { return ptr_copy_manager; }
+
+
 	/**
 	 @brief		명령어의 행동을 찾는 메서드
-	 @param		command: 사용자가 입력한 명령어
+	 @param		command: 사용자가 입력한 명령어(정상적인 입력이라고 가정)
 	 @return	수행해야할 행동 반환
 	 */
 	std::string find_action(const std::string command);
 
 	/**
 	 @brief		명령어의 옵션을 찾는 메서드
-	 @param		command: 사용자가 입력한 명령어
+	 @param		command: 사용자가 입력한 명령어(정상적인 입력이라고 가정)
 	 @return	옵션 반환
 	 */
 	std::string find_option(const std::string command);
 
 	/**
 	 @brief		명령어의 폴더경로를 찾는 메서드
+	 @param		command: 사용자가 입력한 명령어(정상적인 입력이라고 가정)
 	 @return	directory_path 반환
 	 */
 	std::string find_directory(const std::string command);
+
+	/**
+	 @brief		옳바른 명령어가 입력되었는지 확인하는 메소드
+	 @param		command: 사용자가 입력한 명령어
+	 @return	옳바른 명령어이면 return true
+				옳바르지 못한 명령어이면 return false
+	 @details	아직 구현 미실시
+	 */
+	bool is_pefect_command(const std::string command);
 
 public:
 
@@ -80,6 +95,7 @@ public:
 	/**
 	 @brief		경로를 제거하는 메서드
 	 @param		command: 사용자가 입력한 명령어
+	 @details	root/copy 출력후 삭제 인덱스 입력
 	 */
 	void _delete(std::string command);
 
@@ -90,10 +106,21 @@ public:
 	void print(std::string command);
 
 	/**
+	 @brief		백업을 실행하는 메서드
+	 */
+	void backup();
+
+	/**
+	 @brief		명령어의 사용법을 출력하는 메서드
+	 */
+	void help();
+
+	/**
 	 @brief		명령어를 주관하는 시스템
 	 @details	사용자의 명령어를 입력받고 action를 판단하여
 				행동 메서드에게 전달한다.
-				*행동 메서드에게 전달할 때 잘라서 보낼 것인가?
+				행동 메서드에게 전달할 때 잘라서 보낼 것인가?
+	 @bug		명령어들이 실행이 왼됨
 	 */
 	void command_system();
 };

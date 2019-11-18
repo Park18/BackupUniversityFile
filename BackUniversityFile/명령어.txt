@@ -1,21 +1,24 @@
 명령어
-action -option subject element
+추가: root directory
+삭제: root directory
+출력: root directory
+추가: copy directory
+삭제: copy directory
+출력: copy directory
+백업
 
-/*add
- *subject subjectName
- *-f subject localRoute
- */
-
-/*_delete
- *subject index
- *-f subject index
- */
-
-/*print
- *suject
- *-f subject
- */
-
-/*clear
- *system("cls");
- */
+//------------명령어-------------//
+// 추가: action, option, directory
+// 삭제: action, option, directory
+// 출력: action, option, directory
+// 백업: action
+//----------명령어 형식----------//
+// action -option directory
+// 
+// action:	수행할 메서드
+// option:	root/copy
+// directory:	폴더 경로
+//----------명령어 예------------//
+// add -root d:/gitbub
+// add -copy c/users/hyunwoo/download
+// backup

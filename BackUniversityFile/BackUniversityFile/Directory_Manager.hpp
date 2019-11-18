@@ -8,6 +8,7 @@
 #include <boost\filesystem.hpp>
 #include <boost\foreach.hpp>
 
+#define BASE_DIRECTORY_FILE "example.txt"
 
 #define IS_HAVE_DIRETORY(x) boost::filesystem::is_directory(x)
 
@@ -34,12 +35,12 @@ protected:
 	/**
 	 @brief	프로그램 종료시 root_directory를 백업하는 메소드
 	 */
-	void set_backup();
+	virtual void set_backup() = 0;
 
 	/**
 	 @brief	프로그램 초기화시 백업된 root_directory를 vector변수에 대입하는 메소드
 	 */
-	void get_backup();
+	virtual void get_backup() = 0;
 
 public:
 
@@ -47,14 +48,14 @@ public:
 	 @brief		생성자
 	 @details	프로그램이 시작할 때 directory 백업본을 가져온다.
 	 */
-	Base_Directory_Manager() { set_ptr_directory(new std::vector<std::string>); get_backup(); }
+	Base_Directory_Manager() { set_ptr_directory(new std::vector<std::string>); /*get_backup();*/ }
 
 	/**
 	 @brief		소멸자
 	 @details	프로그램이 종료될 때 directory를 백업하고
 				동적 할당된 vector를 해제한다.
 	 */
-	~Base_Directory_Manager() { set_backup(); delete get_ptr_directory(); }
+	~Base_Directory_Manager() { /*set_backup();*/ delete get_ptr_directory(); }
 
 	/**
 	 @brief	vector에 root_directory를 저장하는 메소드
@@ -82,7 +83,14 @@ public:
  */
 class Root_Directory_Manager : public Base_Directory_Manager
 {
+protected:
+	// Base_Directory_Manager을(를) 통해 상속됨
+	virtual void set_backup() override;
+	virtual void get_backup() override;
 
+public:
+	Root_Directory_Manager() { get_backup(); }
+	~Root_Directory_Manager() { set_backup(); }
 };
 
 #define COPY_DIRECTORY_FILE	"Backup\\copy_directory.txt"
@@ -94,7 +102,14 @@ class Root_Directory_Manager : public Base_Directory_Manager
  */
 class Copy_Directory_Manager : public Base_Directory_Manager
 {
+protected:
+	// Base_Directory_Manager을(를) 통해 상속됨
+	virtual void set_backup() override;
+	virtual void get_backup() override;
 
+public:
+	Copy_Directory_Manager() { get_backup(); }
+	~Copy_Directory_Manager() { set_backup(); }
 };
 
 #endif // !DIRECTORY_MANAGER_HPP

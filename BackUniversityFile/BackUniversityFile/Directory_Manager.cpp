@@ -2,19 +2,24 @@
 
 using namespace std;
 
+// Example set_backup()
+/*
 void Base_Directory_Manager::set_backup()
 {
-	ofstream write_file(ROOT_DIRECTORY_FILE);
+	ofstream write_file("exapmle.txt");
 
 	BOOST_FOREACH(string directory, (*get_ptr_directory()))
 		write_file << directory << endl;
 
 	write_file.close();
 }
+*/
 
+// Example get_backup()
+/*
 void Base_Directory_Manager::get_backup()
 {
-	ifstream read_file(ROOT_DIRECTORY_FILE);
+	ifstream read_file("example.txt");
 
 	if (read_file.is_open())
 	{
@@ -32,6 +37,8 @@ void Base_Directory_Manager::get_backup()
 		exit(0);
 	}
 }
+*/
+
 
 void Base_Directory_Manager::add(std::string root_directory)
 {
@@ -74,4 +81,67 @@ void Base_Directory_Manager::print()
 		cout << "[" << index << "]" << (*get_ptr_directory())[index] << endl;
 
 	cout << "**************my root directory***************" << endl;
+}
+
+void Copy_Directory_Manager::set_backup()
+{
+	ofstream write_file(COPY_DIRECTORY_FILE);
+
+	BOOST_FOREACH(string directory, (*get_ptr_directory()))
+		write_file << directory << endl;
+
+	write_file.close();
+}
+
+void Copy_Directory_Manager::get_backup()
+{
+	ifstream read_file(COPY_DIRECTORY_FILE);
+
+	if (read_file.is_open())
+	{
+		string root_directory;
+		while (read_file.peek() != EOF)
+		{
+			getline(read_file, root_directory);
+			add(root_directory);
+		}
+	}
+
+	else
+	{
+		cout << "lost root_directory" << endl;
+		exit(0);
+	}
+}
+
+
+void Root_Directory_Manager::set_backup()
+{
+	ofstream write_file(ROOT_DIRECTORY_FILE);
+
+	BOOST_FOREACH(string directory, (*get_ptr_directory()))
+		write_file << directory << endl;
+
+	write_file.close();
+}
+
+void Root_Directory_Manager::get_backup()
+{
+	ifstream read_file(ROOT_DIRECTORY_FILE);
+
+	if (read_file.is_open())
+	{
+		string root_directory;
+		while (read_file.peek() != EOF)
+		{
+			getline(read_file, root_directory);
+			add(root_directory);
+		}
+	}
+
+	else
+	{
+		cout << "lost root_directory" << endl;
+		exit(0);
+	}
 }

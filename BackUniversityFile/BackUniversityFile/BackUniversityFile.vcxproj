@@ -165,14 +165,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Command_delete.cpp" />
-    <ClCompile Include="Command2.cpp" />
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Directory_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Command_delete.h" />
-    <ClInclude Include="Command2.h" />
+    <ClInclude Include="Command.hpp" />
     <ClInclude Include="Directory_Manager.hpp" />
     <ClInclude Include="Error.h" />
   </ItemGroup>

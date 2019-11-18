@@ -1,9 +1,9 @@
-
-
 #include <boost\filesystem.hpp>
 #include <boost\foreach.hpp>
 #include <boost\filesystem\path.hpp>
 #include <iostream>
+#include "Directory_Manager.hpp"
+#include "Command.hpp"
 
 
 using namespace std;
@@ -31,5 +31,6 @@ int main()
 	*/
 
 	
-	
+	Command command;
+	command.command_system();
 }
