@@ -1,0 +1,19 @@
+백업 프로그램
+
+프로그램 초기화
+백업된 정보 :
+root_directory: 원본 폴더
+copy_directory: 복사본 폴더
+
+프로그램 실행 
+사용자에게 명령어를 입력 받는다.
+action option directory
+
+ex)
+add -root c:\ -> 
+delete -copy -> 목록 출력 -> index 입력 -> 해당 인덱스 삭제
+backup
+
+명령어 최대 " "의 개수 : 2개
+명령어 최소 " "의 개수 : 0개
+
