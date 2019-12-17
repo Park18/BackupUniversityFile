@@ -53,36 +53,35 @@ protected:
 	Root_Directory_Manager* get_ptr_root_manager() { return ptr_root_manager; }
 	Copy_Directory_Manager* get_ptr_copy_manager() { return ptr_copy_manager; }
 
-
+public:	// 임시 public
 	/**
 	 @brief		명령어의 행동을 찾는 메서드
 	 @param		command: 사용자가 입력한 명령어(정상적인 입력이라고 가정)
 	 @return	수행해야할 행동 반환
 	 */
-	std::string find_action(const std::string command);
+	std::string command_action(const std::string command);
 
 	/**
 	 @brief		명령어의 옵션을 찾는 메서드
 	 @param		command: 사용자가 입력한 명령어(정상적인 입력이라고 가정)
 	 @return	옵션 반환
 	 */
-	std::string find_option(const std::string command);
+	std::string command_option(const std::string command);
 
 	/**
 	 @brief		명령어의 폴더경로를 찾는 메서드
 	 @param		command: 사용자가 입력한 명령어(정상적인 입력이라고 가정)
 	 @return	directory_path 반환
 	 */
-	std::string find_directory(const std::string command);
+	std::string command_deirectory(const std::string command);
 
 	/**
 	 @brief		옳바른 명령어가 입력되었는지 확인하는 메소드
 	 @param		command: 사용자가 입력한 명령어
-	 @return	옳바른 명령어이면 return true
-				옳바르지 못한 명령어이면 return false
+	 @return	true: 옳바른 명령어 / false: 잘못된 명령어
 	 @details	아직 구현 미실시
 	 */
-	bool is_pefect_command(const std::string command);
+	bool check_command(const std::string command);
 
 public:
 

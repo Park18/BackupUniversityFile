@@ -1,7 +1,10 @@
 #include <boost\filesystem.hpp>
 #include <boost\foreach.hpp>
 #include <boost\filesystem\path.hpp>
+
 #include <iostream>
+#include <string>
+
 #include "Directory_Manager.hpp"
 #include "Command.hpp"
 
@@ -30,7 +33,7 @@ int main()
 	cout << boost::filesystem::is_directory(my_dir) << endl;
 	*/
 
-	
 	Command command;
-	command.command_system();
+	string str = "add -option directory";
+	cout << command.command_deirectory(str) << "asd";
 }
