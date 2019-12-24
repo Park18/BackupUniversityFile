@@ -34,6 +34,7 @@ int main()
 	*/
 
 	Command command;
-	string str = "add -option directory";
-	cout << command.command_deirectory(str) << "asd";
+	//cout<<  command.command_option("print -root");
+	command.command_system();
+
 }
