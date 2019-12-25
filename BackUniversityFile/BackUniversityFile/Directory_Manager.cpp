@@ -42,45 +42,51 @@ void Base_Directory_Manager::get_backup()
 
 void Base_Directory_Manager::add(std::string root_directory)
 {
-	if (IS_HAVE_DIRETORY(root_directory))
-		get_ptr_directory()->push_back(root_directory);
-
-	else
-		cout << "error, not folder!" << endl;
+	get_ptr_directory()->push_back(root_directory);
 }
 
 void Base_Directory_Manager::_delete()
 {
-	cout << "********************delete********************" << endl;
+	if (this->ptr_directory->empty())
+	{
+		cout << "[알림] : 비어있습니다." << endl << endl;
+		return;
+	}
+
+	cout << "[삭제]" << endl;
 	print();
 
 	while (1)
 	{
 		int index = 0;
-		cout << "input delte index : ";
+		cout << "[삭제할 번호] >> ";
 		cin >> index;
 
-		if (index < 0)
-			cout << "pls enter the number bigger than 0" << endl;
-
-		else if (index > get_directory_size())
-			cout << "pls enther the number samller than " << get_directory_size() << endl;
+		if (index < 0 || index > this->ptr_directory->size())
+			cout << "[알림] : 잘못된 값이 입력됬습니다." << endl << endl;
 
 		else
-			break;
+		{
+			this->ptr_directory->erase(this->ptr_directory->begin() + index);
+			return;
+		}
 	}
-
-	cout << "********************delete********************" << endl;
 }
 
 void Base_Directory_Manager::print()
 {
-	cout << "**************my root directory***************" << endl;
+	if (ptr_directory->empty())
+	{
+		cout << "[알림] : 비어있습니다." << endl;
+		return;
+	}
+
+	cout << "[출력]" << endl;
 
 	for (int index = 0; index < get_directory_size(); index++)
-		cout << "[" << index << "]" << (*get_ptr_directory())[index] << endl;
+		cout << "[" << index << "] : " << (*get_ptr_directory())[index] << endl;
 
-	cout << "**************my root directory***************" << endl;
+	cout << endl;
 }
 
 void Copy_Directory_Manager::set_backup()

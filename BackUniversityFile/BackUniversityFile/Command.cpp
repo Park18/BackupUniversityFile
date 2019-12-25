@@ -11,12 +11,12 @@ std::string Command::command_action(const std::string command)
 std::string Command::command_option(const std::string command)
 {
 	int option_index = command.find(" -");
-	int blank_index = command.find(" ", option_index);
+	int blank_index = command.find(" ", option_index + 1);
 	
 	return command.substr(option_index + 1, blank_index - (option_index + 1));
 }
 
-std::string Command::command_deirectory(const std::string command)
+std::string Command::command_directory(const std::string command)
 {
 	int option_index = command.find(" -") + 2;
 	int blank_index = command.find(" ", option_index);
@@ -83,18 +83,24 @@ bool Command::check_command(const std::string command)
 	case 2:
 		action = command_action(command);
 		option = command_option(command);
-		directory = command_option(command);
+		directory = command_directory(command);
 
 		if (action == ACTION_ADD)
 		{
 			if (option == OPTION_ROOT || option == OPTION_COPY)
 			{
+				boost::filesystem::path add_path(directory);
+
 				// 존재하는 폴더인지 확인
+				if (boost::filesystem::is_directory(add_path))
+					return true;
+
+				else
+					return false;
 			}
 
 			else
 				return false;
-
 		}
 
 		else
@@ -112,12 +118,12 @@ void Command::add(std::string command)
 {
 	if (command_option(command) == OPTION_ROOT)
 	{
-		this->ptr_root_manager->add(command_deirectory(command));
+		this->ptr_root_manager->add(command_directory(command));
 	}
 
 	else if(command_option(command) == OPTION_COPY)
 	{
-		this->ptr_copy_manager->add(command_deirectory(command));
+		this->ptr_copy_manager->add(command_directory(command));
 	}
 }
 
@@ -166,12 +172,29 @@ void Command::command_system()
 		getline(cin, command);
 
 		if (check_command(command))
-			cout << "옳바른 명령어" << endl;
+		{
+			string action = command_action(command);
+
+			if (action == ACTION_ADD)
+				add(command);
+
+			else if (action == ACTION_DELETE)
+				_delete(command);
+
+			else if (action == ACTION_PRINT)
+				print(command);
+
+			else if (action == ACTION_BACKUP)
+				backup();
+
+			else if (action == ACTION_HELP)
+				help();
+
+			else if (action == ACTION_EXIT)
+				return;	
+		}
 
 		else
-			cout << "잘못된 명령어" << endl;
-
-		if (command_action(command) == "exit")
-			return;
+			cout << "잘못된 명령어입니다." << endl;
 	}
 }

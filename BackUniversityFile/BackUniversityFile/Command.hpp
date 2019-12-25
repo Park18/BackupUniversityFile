@@ -10,6 +10,7 @@
 #define ACTION_PRINT "print"
 #define ACTION_BACKUP "backup"
 #define ACTION_EXIT "exit"
+#define ACTION_HELP "help"
 
 #define OPTION_ROOT "-root" // 옵션 root
 #define OPTION_COPY "-copy"	// 옵션 copy
@@ -22,6 +23,7 @@
 // 삭제: action, option
 // 출력: action, option
 // 백업: action
+// 도움말: help
 //----------명령어 형식----------//
 // action -option directory
 // 
@@ -79,7 +81,7 @@ public:	// 임시 public, 원래 protected
 	 @param		command: 사용자가 입력한 명령어(정상적인 입력이라고 가정)
 	 @return	directory_path 반환
 	 */
-	std::string command_deirectory(const std::string command);
+	std::string command_directory(const std::string command);
 
 	/**
 	 @brief		옳바른 명령어가 입력되었는지 확인하는 메소드
