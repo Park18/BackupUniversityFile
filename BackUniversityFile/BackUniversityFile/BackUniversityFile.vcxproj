@@ -176,6 +176,7 @@
     <ClInclude Include="Command.hpp" />
     <ClInclude Include="Directory_Manager.hpp" />
     <ClInclude Include="Error.h" />
+    <ClInclude Include="Test.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

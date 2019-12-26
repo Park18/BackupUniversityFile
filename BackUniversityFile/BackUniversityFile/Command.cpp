@@ -92,7 +92,7 @@ bool Command::check_command(const std::string command)
 				boost::filesystem::path add_path(directory);
 
 				// 존재하는 폴더인지 확인
-				if (boost::filesystem::is_directory(add_path))
+				if (boost::filesystem::exists(add_path))
 					return true;
 
 				else
@@ -112,6 +112,18 @@ bool Command::check_command(const std::string command)
 	}
 
 	return false;
+}
+
+Command::Command()
+{
+	this->ptr_root_manager = new Root_Directory_Manager(); 
+	this->ptr_copy_manager = new Copy_Directory_Manager();
+}
+
+Command::~Command()
+{
+	delete this->ptr_root_manager;
+	delete this->ptr_copy_manager;
 }
 
 void Command::add(std::string command)
@@ -191,10 +203,10 @@ void Command::command_system()
 				help();
 
 			else if (action == ACTION_EXIT)
-				return;	
+				return;
 		}
 
 		else
-			cout << "잘못된 명령어입니다." << endl;
+			cout << "잘못된 명령어입니다." << endl << endl;
 	}
 }

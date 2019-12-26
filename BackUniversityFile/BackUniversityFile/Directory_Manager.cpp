@@ -68,6 +68,10 @@ void Base_Directory_Manager::_delete()
 		else
 		{
 			this->ptr_directory->erase(this->ptr_directory->begin() + index);
+			
+			// cin 버퍼 초기화
+			// 초기화 이유 command_system의 버퍼가 남아서 잘못된 명령어로 인식됨
+			cin.ignore();
 			return;
 		}
 	}
@@ -115,8 +119,25 @@ void Copy_Directory_Manager::get_backup()
 
 	else
 	{
-		cout << "lost root_directory" << endl;
-		exit(0);
+		cout << "[알림] : <Copy Directory> 백업된 파일을 찾을 수 없습니다. 파일을 재생성합니다." << endl;
+		
+		// 파일 재생성하는 코드
+		boost::filesystem::path backup_directory("path");
+		
+		if (boost::filesystem::exists(backup_directory))
+		{
+			ofstream write_file(COPY_DIRECTORY_FILE);
+			write_file.close();
+		}
+
+		else
+		{
+			boost::filesystem::create_directory(backup_directory);
+			ofstream write_file(COPY_DIRECTORY_FILE);
+			write_file.close();
+		}
+
+		//exit(0);
 	}
 }
 
@@ -147,7 +168,24 @@ void Root_Directory_Manager::get_backup()
 
 	else
 	{
-		cout << "lost root_directory" << endl;
-		exit(0);
+		cout << "[알림] : <Root Directory> 백업된 파일을 찾을 수 없습니다. 파일을 재생성합니다." << endl;
+		
+		// 파일 재생성하는 코드
+		boost::filesystem::path backup_directory("path");
+
+		if (boost::filesystem::exists(backup_directory))
+		{
+			ofstream write_file(COPY_DIRECTORY_FILE);
+			write_file.close();
+		}
+
+		else
+		{
+			boost::filesystem::create_directory(backup_directory);
+			ofstream write_file(COPY_DIRECTORY_FILE);
+			write_file.close();
+		}
+
+		//exit(0);
 	}
 }

@@ -104,6 +104,18 @@ public:	// 임시 public, 원래 protected
 public:
 
 	/**
+	@brief		생성자
+	@details	Root, Copy_Directory_Manager 동적 할당
+	*/
+	Command();
+
+	/**
+	@brief		소멸자
+	@details	Root, Copy_Directory_Manager 동적 할당 해제
+	*/
+	~Command();
+
+	/**
 	 @brief		경로를 추가하는 메서드
 	 @param		command: 사용자가 입력한 명령어
 	 @details	add -option directory

@@ -9,6 +9,7 @@
 #include <boost\foreach.hpp>
 
 #define BASE_DIRECTORY_FILE "example.txt"
+#define DIRECTORY_NAME "path"	// 이름좀 생각
 
 #define IS_HAVE_DIRETORY(x) boost::filesystem::is_directory(x)
 
@@ -74,7 +75,7 @@ public:
 	void print();
 };
 
-#define ROOT_DIRECTORY_FILE	"Backup\\root_directory.txt"
+#define ROOT_DIRECTORY_FILE	"path\\root_directory.txt"
 /**
  @class		root_directory를 관리하는 클래스
  @date		2019/11/15
@@ -93,7 +94,7 @@ public:
 	~Root_Directory_Manager() { set_backup(); }
 };
 
-#define COPY_DIRECTORY_FILE	"Backup\\copy_directory.txt"
+#define COPY_DIRECTORY_FILE	"path\\copy_directory.txt"
 /**
  @class		copy_directory를 관리하는 클래스
  @date		2019/11/15

@@ -1,16 +1,14 @@
-//#include <boost\filesystem.hpp>
-//#include <boost\foreach.hpp>
-//#include <boost\filesystem\path.hpp>
-//#include <boost/lexical_cast.hpp>
-
 // directory_test
-#include <boost\filesystem.hpp>
-#include <iostream>
-#include <string>
-#include <vector>
-
+//#include <boost\filesystem.hpp>
 //#include <iostream>
 //#include <string>
+//#include <vector>
+
+// Test.hpp
+#include "Test.hpp"
+
+#include <iostream>
+#include <string>
 
 #include "Directory_Manager.hpp"
 #include "Command.hpp"
@@ -26,21 +24,21 @@ int main()
 {
 	//directory_test();
 	command_test();
+	//test1();
 }
 
 void test1()
 {	
-	const boost::filesystem::path path("c:\\users");
+	ofstream write_file("path\\test.txt");
 
-	BOOST_FOREACH(const boost::filesystem::path & p,
-		std::make_pair(boost::filesystem::recursive_directory_iterator(path),
-		boost::filesystem::recursive_directory_iterator()))
+	if (write_file.is_open())
 	{
-		if (!boost::filesystem::is_directory(p))
-		{
-			std::cout << p << std::endl;
-		}
+		write_file << "hello" << endl;
+		write_file.close();
 	}
+
+	else
+		cout << "파일 열기 실패" << endl;
 }
 
 void command_test()
